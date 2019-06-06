@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Composant2 from './composant2';
 
 function App() {
   return (
@@ -8,16 +9,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+       Welcome to first react app
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+
+<Composant2  props1="contenu 1.1" props2="contenu 1.2" >Falso</Composant2>
+<Composant2  props1="contenu 2.1" props2="contenu 2.2" />
+<Composant2  props1="contenu 3.1" props2="contenu 3.2" />
+
+     
       </header>
     </div>
   );
