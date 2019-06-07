@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from '../logo.svg';
-import './App.css';
-import Composant2 from './composant2';
-
-import Mycompclass from './mycompclass';
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-       Welcome to first react app
-        </p>
-
-
-<Composant2  props1="contenu 1.1" props2="contenu 1.2" >Hello, I am the first component</Composant2>
- 
-<Mycompclass></Mycompclass>
-     
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import News from './News';
+export default class App extends Component {
+  state = {
+    data:[
+        {
+            title :"title news 1",
+            body : "the body of the news 1",
+        },
+        {
+          title :"title news 2",
+          body : "the body of the news 2",
+      },
+      {
+        title :"title news 3",
+        body : "the body of the news 3",
+    },              
+    ],
 }
-
-export default App;
+  render() {
+    return (
+      <div>
+        <News data={this.state.data}>Hello</News>
+      </div>
+    )
+  }
+}
