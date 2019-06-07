@@ -1,27 +1,17 @@
 import React, { Component } from 'react'
- 
+ import ShowNews from './ShowNews';
 export default class News extends Component {
 
     
     render() {
         return (
             <div>
-dfd
-<br></br>
-News : {  
-   this.props.data.map(currentItem => {
-
-        return(
-            <div>
-{currentItem.title} => {currentItem.body}
+ <ShowNews data={this.props.data} ></ShowNews>
             </div>
-        )
-    })
-    
 
-}
 
-            </div>
+
+
         )
     }
 }
