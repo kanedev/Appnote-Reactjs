@@ -1,26 +1,40 @@
 import React, { Component } from 'react'
 import News from './News';
 import SearchBar from './SearchBar'
+import ShowSearch from './ShowSearch'
 export default class App extends Component {
   state = {
     data:[
         {
-            title :"title news 1",
+            title :"title news1",
             body : "the body of the news 1",
         },
         {
-          title :"title news 2",
+          title :"title news2",
           body : "the body of the news 2",
       },
       {
-        title :"title news 3",
+        title :"title news3",
         body : "the body of the news 3",
     },              
     ],
+    filtred:[]
 }
 
  onInputChange = (event) => {
- console.log(event.target.value); 
+ let search = event.target.value;
+
+ const filtredArray = this.state.data.filter(currentItem => {
+  return currentItem.title.indexOf(search) > -1;
+ });
+
+ this.setState(
+   {filtred : filtredArray}
+ );
+
+
+
+ 
 }
 
 
@@ -28,7 +42,9 @@ export default class App extends Component {
     return (
       <div>
         <SearchBar search={this.onInputChange}></SearchBar>
-        <News data={this.state.data}>Hello</News>
+        <News data={this.state.filtred.length>0 ? this.state.filtred : this.state.data}></News>
+
+
       </div>
     )
   }
