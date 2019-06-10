@@ -4,21 +4,21 @@ import SearchBar from './SearchBar'
 //import ShowSearch from './ShowSearch'
 export default class App extends Component {
   state = {
-    data:[
-        {
-            title :"title news1",
-            body : "the body of the news 1",
-        },
-        {
-          title :"title news2",
-          body : "the body of the news 2",
-      },
-      {
-        title :"title news3",
-        body : "the body of the news 3",
-    },              
-    ],
+    data:[],
     filtred:[]
+}
+
+componentWillMount() {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(response => response.json())
+  .then(json => 
+
+    this.setState({
+      data : json
+    })
+    
+    )
+
 }
 
  onInputChange = (event) => {
@@ -33,11 +33,25 @@ export default class App extends Component {
 }
 
  removeItem = (index) => {
- let oldData=[...this.state.data];
- oldData.splice(index,1);
- this.setState({
-   data : oldData
- })
+
+ let oldData = this.state.filtred.length>0 ? this.state.filtred : this.state.data;
+
+if (this.state.filtred.length>0) {
+ 
+  oldData.splice(index,1);
+
+  this.setState({
+    filtred : oldData
+  })
+}
+else {
+  oldData.splice(index,1);
+  this.setState({
+    data : oldData,
+  })
+
+}
+
 }
 
 
