@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ShowNews = ({data}) => {
+const ShowNews = ({data,edit}) => {
     return (
         <div>
 
@@ -9,6 +9,7 @@ const ShowNews = ({data}) => {
         <tr>
             <th>Title</th>
             <th>Content</th>
+            <th>Edit</th>
  
         </tr>
     </thead>
@@ -24,6 +25,9 @@ data.map((currentItem,i) => {
         <tr key={i}>
             <td>{currentItem.title}</td>
             <td>{currentItem.body}</td>
+            <td> <button name="button_modification_name" id="button_modification_id" className="btn btn-warning" href="#" onClick={()=> edit(i)} >x</button> </td>
+
+        
         </tr>
     )
 })

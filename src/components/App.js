@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import News from './News';
 import SearchBar from './SearchBar'
-import ShowSearch from './ShowSearch'
+//import ShowSearch from './ShowSearch'
 export default class App extends Component {
   state = {
     data:[
@@ -27,24 +27,25 @@ export default class App extends Component {
  const filtredArray = this.state.data.filter(currentItem => {
   return currentItem.title.indexOf(search) > -1;
  });
-
  this.setState(
    {filtred : filtredArray}
  );
+}
 
-
-
- 
+ removeItem = (index) => {
+ let oldData=[...this.state.data];
+ oldData.splice(index,1);
+ this.setState({
+   data : oldData
+ })
 }
 
 
-  render() {
+render() {
     return (
       <div>
-        <SearchBar search={this.onInputChange}></SearchBar>
-        <News data={this.state.filtred.length>0 ? this.state.filtred : this.state.data}></News>
-
-
+        <SearchBar search={this.onInputChange} ></SearchBar>
+        <News edit={this.removeItem} data={this.state.filtred.length>0 ? this.state.filtred : this.state.data}></News>
       </div>
     )
   }

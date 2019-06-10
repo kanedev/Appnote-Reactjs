@@ -6,7 +6,7 @@ export default class News extends Component {
     render() {
         return (
             <div>
- <ShowNews data={this.props.data} ></ShowNews>
+ <ShowNews  data={this.props.data} edit={this.props.edit} ></ShowNews>
             </div>
 
 
