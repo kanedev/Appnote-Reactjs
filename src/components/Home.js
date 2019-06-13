@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import News from './News';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
+import Navbar from "./Navbar";
 //import ShowSearch from './ShowSearch'
 export default class Home extends Component {
   state = {
@@ -58,7 +59,8 @@ else {
 render() {
     return (
       <div>
-        <SearchBar search={this.onInputChange} ></SearchBar>
+<Navbar search={this.onInputChange} ></Navbar>
+        {/* <SearchBar search={this.onInputChange} ></SearchBar> */}
         <News edit={this.removeItem} data={this.state.filtred.length>0 ? this.state.filtred : this.state.data}></News>
       </div>
     )
