@@ -4,7 +4,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import AddUser from './components/AddUser';
-
+import AddNote from './components/AddNote';
 export default class Routes extends Component {
     render() {
         return (  
@@ -12,6 +12,7 @@ export default class Routes extends Component {
  
    <Route path='/' exact component={Home}/>
    <Route path='/about' component={About}/>
+   <Route path='/addnote' component={AddNote}/>
    <Route path='/adduser' component={AddUser}/>
    <Route path='/contact' component={Contact}/>
 </Switch>

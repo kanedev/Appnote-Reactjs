@@ -17,6 +17,9 @@ const Navbar = ({search}) => {
                             <Link to="/" className="nav-link">Home <span className="sr-only">(current)</span></Link>
                         </li>
                         <li className="nav-item">
+                            <Link to="/addnote" className="nav-link">Add Note</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link to="/adduser" className="nav-link">Add User</Link>
                         </li>
 
