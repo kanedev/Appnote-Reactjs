@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import {BrowserRouter} from 'react-router-dom';
 import Routes from './Routes';
-
+import './Firebase';
 import './index.css';
 //import Home from './components/Home';
 
