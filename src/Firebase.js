@@ -12,6 +12,9 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+
+
  
 //   firebase.database().ref('students').set(
 // [{
@@ -34,13 +37,38 @@
 //        );
 
 
-firebase.database().ref('students').set(
-    {
-    name : 'walid',
-    age : 34,
-    ville : 'Paris'
-    
-    }).then(
-    
-            console.log("Added")
-        );
+//To add a new product
+// firebase.database().ref('product').push(
+//     {
+//     name : 'Smartphone',
+//     price : '100 EU',   
+//     }).then(
+//             console.log("Added")
+//         );
+        
+// request data from database 1
+        // firebase.database().ref('product/-LhGSe_CWp7gReSFQm3j').once('value').then(
+        //     (snapshot) => { console.log(snapshot.val())  }
+        // ) ;
+ 
+
+// request data from database 2
+//         firebase.database().ref('product').orderByChild('price').once('value').then(
+//             (snapshot) => { 
+//                 console.log(snapshot.val()) 
+
+//              const products = [];
+//              snapshot.forEach(
+//                  (snapshotChild) => {
+//                      products.push(
+//                          {
+//                             id : snapshotChild.key, 
+//                             ...snapshotChild.val()
+//                          }
+//                          )
+//                  }
+//              )
+//              console.log(products)
+//    }
+//         ) ;
+
