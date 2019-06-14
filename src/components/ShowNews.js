@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ShowNews = ({data,edit}) => {
+   // console.log({data})  
     return (
         <div>
 
@@ -17,10 +18,9 @@ const ShowNews = ({data,edit}) => {
 
 
     <tbody>
-        
+     
     {  
 data.map((currentItem,i) => {
-
     return(
         <tr key={i}>
             <td>{currentItem.title}</td>

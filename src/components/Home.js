@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import News from './News';
+import ShowNews from './ShowNews';
+import ShowNotes from './ShowNotes';
 //import SearchBar from './SearchBar';
 import Navbar from "./Navbar";
+import {firebaseDB} from '../Firebase'
+
 //import ShowSearch from './ShowSearch'
 export default class Home extends Component {
   state = {
@@ -10,15 +13,42 @@ export default class Home extends Component {
 }
 
 componentWillMount() {
-  fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(response => response.json())
-  .then(json => 
 
-    this.setState({
-      data : json
-    })
+          firebaseDB.ref('notes').orderByChild('titleNote').once('value').then(
+            (snapshot) => { 
+              //  console.log(snapshot.val()) 
+
+             const notes = [];
+             snapshot.forEach(
+                 (snapshotChild) => {
+                     notes.push(
+                         {
+                            id : snapshotChild.key, 
+                            ...snapshotChild.val()
+                         }
+                         )
+                 }
+             )
+ 
+             this.setState({
+               data : notes
+             });
+
+            
+   }
+        ) ;
+  
+
+  // Request Data from JSON
+  // fetch('https://jsonplaceholder.typicode.com/posts')
+  // .then(response => response.json())
+  // .then(json => 
+
+  //   this.setState({
+  //     data : json
+  //   })
     
-    )
+  //   )
 
 }
 
@@ -26,7 +56,7 @@ componentWillMount() {
  let search = event.target.value;
 
  const filtredArray = this.state.data.filter(currentItem => {
-  return currentItem.title.indexOf(search) > -1;
+  return currentItem.titleNote.indexOf(search) > -1;
  });
  this.setState(
    {filtred : filtredArray}
@@ -60,8 +90,13 @@ render() {
     return (
       <div>
 <Navbar search={this.onInputChange} ></Navbar>
+
+
         {/* <SearchBar search={this.onInputChange} ></SearchBar> */}
-        <News edit={this.removeItem} data={this.state.filtred.length>0 ? this.state.filtred : this.state.data}></News>
+        {/* <ShowNews  data={this.state.filtred.length>0 ? this.state.filtred : this.state.data} edit={this.removeItem}></ShowNews> */}
+        <ShowNotes  data={this.state.filtred.length>0 ? this.state.filtred : this.state.data} ></ShowNotes>
+      
+
       </div>
     )
   }
