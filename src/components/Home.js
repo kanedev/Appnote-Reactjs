@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import News from './News';
-import SearchBar from './SearchBar';
+//import SearchBar from './SearchBar';
 import Navbar from "./Navbar";
 //import ShowSearch from './ShowSearch'
 export default class Home extends Component {

@@ -1,7 +1,7 @@
 import React from 'react'
-
 import SearchBar from './SearchBar'
 import {Link} from "react-router-dom"
+
 const Navbar = ({search}) => {
     return (
         <div>
@@ -18,6 +18,12 @@ const Navbar = ({search}) => {
                         </li>
                         <li className="nav-item">
                             <Link to="/addnote" className="nav-link">Add Note</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/editnote" className="nav-link">Edit Note</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/Deletenote" className="nav-link">Delete Note</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/adduser" className="nav-link">Add User</Link>
