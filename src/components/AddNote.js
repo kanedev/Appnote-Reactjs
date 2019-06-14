@@ -3,7 +3,7 @@ import FormNote from './widgets/FormNote'
 const AddNote = () => {
     return (
         <div>
-            <FormNote/>
+            <FormNote type="add"/>
         </div>
     )
 }

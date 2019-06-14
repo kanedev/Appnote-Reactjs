@@ -23,6 +23,33 @@ handleTitle = (event) => {
     });
   }
 
+componentWillMount() {
+
+
+    if (this.props.type === 'edit') {
+        
+        // request data from database 
+        firebaseDB.ref(`notes/${this.props.id}`).once('value').then(
+            (snapshot) => { 
+              //  console.log(snapshot.val()) 
+this.setState({
+Title : snapshot.val().titleNote ,
+Body  : snapshot.val().bodyNote
+
+})
+             }
+        ).catch((e)=>{
+            console.log('Error during connection to the database'+ e)
+        });
+
+    } else {
+        
+    }
+}
+
+
+
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -36,7 +63,26 @@ titleNote : this.state.Title,
 bodyNote : this.state.Body,
  }
 
- //Sending Note to the Firebase DB
+ switch (this.props.type) {
+     case 'edit':
+    // Updating a Note    
+
+    firebaseDB.ref(`notes/${this.props.id}`).update(Note).then(
+        ()=> {
+            this.setState({
+                successMessage : <div className="alert alert-primary">
+                Your note was succefully updated <span role="img" aria-label="note saved">😍 </span>
+                </div>
+                       })
+      }
+    ).catch((e)=>{
+        console.log('Error during the update of the database'+ e)
+    });
+
+         break;
+         case 'add':
+          // Adding a nem Note
+     //Sending Note to the Firebase DB
 firebaseDB.ref('notes').push(Note).then(
     ()=> {
         this.setState({
@@ -48,6 +94,19 @@ firebaseDB.ref('notes').push(Note).then(
 ).catch((e)=>{
     console.log('Error during sendind Data to the database'+ e)
 });
+            break;    
+ 
+     default:
+         break;
+ }
+
+
+
+  
+
+
+
+
 
 
 } else {
